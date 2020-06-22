@@ -19,6 +19,7 @@ function App() {
       </nav>
       <div className="container mt-5">
         <span className="display-4">TITULO </span>
+        <span className="display-2">Subtitulo</span>
       </div>
     </div>
     </div>
