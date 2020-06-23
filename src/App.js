@@ -3,9 +3,6 @@ import './App.css';
 import Collapsible from 'react-collapsible';
 import ReactDOM from 'react-dom';
 
-
-import Dropdown from './Dropdown';
-
 function App() {
 
   return (
