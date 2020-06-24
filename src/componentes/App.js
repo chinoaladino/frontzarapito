@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel, Ul , Container } from 'react-bootstrap'
 
