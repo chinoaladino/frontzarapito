@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as ReactBootStrap from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
 
 class Navigation extends Component {
     render() {
@@ -12,36 +15,52 @@ class Navigation extends Component {
                 <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                     <ReactBootStrap.Nav className="mr-auto">
-                        <ReactBootStrap.Nav.Link href="#features">
-                            Features
+                        <ReactBootStrap.Nav.Link href="#novedades">
+                            Novedades
                         </ReactBootStrap.Nav.Link>
-                        <ReactBootStrap.Nav.Link href="#Pricing">
-                            Pricing
+                        <ReactBootStrap.Nav.Link href="#lenceria">
+                            Lencería
                         </ReactBootStrap.Nav.Link>
-                        <ReactBootStrap.NavDropdown tittle="Dropdown" id="collasible-nav-dropdown">
-                            <ReactBootStrap.NavDropdown.Item href="#action/3.1">
-                                Action
-                            </ReactBootStrap.NavDropdown.Item>
-                            <ReactBootStrap.NavDropdown.Item href="#action/3.2">
-                                Otra Action
-                            </ReactBootStrap.NavDropdown.Item>
-                            <ReactBootStrap.NavDropdown.Item href="#action/3.3">
-                                Mas Action
-                            </ReactBootStrap.NavDropdown.Item>
-                            <ReactBootStrap.Dropdown.Divider>
-                                <ReactBootStrap.Dropdown.Item href="#action/3.3">
-                                    Item del divider
-                                </ReactBootStrap.Dropdown.Item>
-                            </ReactBootStrap.Dropdown.Divider>
-                        </ReactBootStrap.NavDropdown>
-                    </ReactBootStrap.Nav>
-                    <ReactBootStrap.Nav>
-                        <ReactBootStrap.Nav.Link href="#deets">
-                            More deets
+                        <ReactBootStrap.Nav.Link href="#ropadormir">
+                            Ropa de dormir
+                        </ReactBootStrap.Nav.Link>
+                        <ReactBootStrap.Nav.Link href="#ofertas">
+                            Ofertas
                         </ReactBootStrap.Nav.Link>
                         
                     </ReactBootStrap.Nav>
+                    <ReactBootStrap.Nav>
+                        <ReactBootStrap.NavDropdown title="Iniciar sesion" id="collasible-nav-dropdown">
+                            <form className="px-4 py-3">
+                                <div className="form-group">
+                                    <label for="exampleDropdownFormEmail1">Correo electronico</label>
+                                    <input type="email" className="form-control" id="exampleDropdownFormEmail1" placeholder="email@ejemplo.com" />
+                                </div>
+                                <div className="form-group">
+                                    <label for="exampleDropdownFormPassword1">Contraseña</label>
+                                    <input type="password" className="form-control" id="exampleDropdownFormPassword1" placeholder="Contraseña" />
+                                </div>
+                                <div className="form-check">
+                                    <input type="checkbox" className="form-check-input" id="dropdownCheck" />
+                                    <label className="form-check-label" for="dropdownCheck">
+                                        Recordar
+                                    </label>
+                                </div>
+                                <button type="submit" className="btn btn-primary">Iniciar sesion</button>
+                            </form>
+                            <div className="dropdown-divider"></div>
+                            <a className="dropdown-item" href="/">¿Eres nuevo? Registrate aqui</a>
+                            <a className="dropdown-item" href="/">¿Olvidaste tu contraseña?</a>
+
+
+                        </ReactBootStrap.NavDropdown>
+                    </ReactBootStrap.Nav>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Busca tu producto" className="mr-sm-2" />
+                        <Button variant="outline-primary">Buscar</Button>
+                    </Form>   
                 </ReactBootStrap.Navbar.Collapse>
+                
             </ReactBootStrap.Navbar>
         );
     }
