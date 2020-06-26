@@ -43,16 +43,16 @@ class Navigation extends Component {
                         <ReactBootStrap.NavDropdown title="Iniciar sesion" id="collasible-nav-dropdown">
                             <form className="px-4 py-3">
                                 <div className="form-group">
-                                    <label for="exampleDropdownFormEmail1">Correo electronico</label>
+                                    <label htmlFor="exampleDropdownFormEmail1">Correo electronico</label>
                                     <input type="email" className="form-control" id="exampleDropdownFormEmail1" placeholder="email@ejemplo.com" />
                                 </div>
                                 <div className="form-group">
-                                    <label for="exampleDropdownFormPassword1">Contraseña</label>
+                                    <label htmlFor="exampleDropdownFormPassword1">Contraseña</label>
                                     <input type="password" className="form-control" id="exampleDropdownFormPassword1" placeholder="Contraseña" />
                                 </div>
                                 <div className="form-check">
                                     <input type="checkbox" className="form-check-input" id="dropdownCheck" />
-                                    <label className="form-check-label" for="dropdownCheck">
+                                    <label className="form-check-label" htmlFor="dropdownCheck">
                                         Recordar
                                     </label>
                                 </div>

@@ -11,7 +11,6 @@ import {
 import Footer from './Footer';
 import Inicio from './Inicio';
 
-
 function App() {
 
   return (
@@ -27,12 +26,13 @@ function App() {
           <Route exact path="/Carro">
             <Carro />
           </Route>
+          <Route exact path="/Perfil">
+          </Route>
         </Switch>
       </Router>
-      
       <Footer />
     </div>
-    
+
   );
 
 

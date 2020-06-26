@@ -36,7 +36,7 @@ class Inicio extends Component {
                 </div>
 
                 <Container>
-                    <p className="display-4">Productos</p>
+                    <p className="display-4" style={{textAlign: "center"}}>Productos</p>
                 </Container>
 
                 <Container>
