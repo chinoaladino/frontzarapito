@@ -6,7 +6,8 @@ export default class Productos extends Component {
 
     state = {
     productos: []
-    }
+   
+}
 
 
     async componentDidMount(){
