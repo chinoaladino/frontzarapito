@@ -28,11 +28,9 @@ function App() {
             <Carro />
           </Route>
         </Switch>
-      </Router>
-      
-      <Footer />
+      </Router> 
     </div>
-    
+
   );
 
 

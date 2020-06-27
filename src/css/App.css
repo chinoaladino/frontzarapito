@@ -13,6 +13,13 @@
   }
 }
 
+.foo{
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  align-self: flex-end;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
