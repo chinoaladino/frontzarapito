@@ -30,12 +30,16 @@ class Navigation extends Component {
                             Ofertas
                         </ReactBootStrap.Nav.Link>
 
+
                     </ReactBootStrap.Nav>
                     <ReactBootStrap.Nav>
 
                         <ReactBootStrap.Nav.Link href="/Carro">
                             <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                                  Carrito
+                        </ReactBootStrap.Nav.Link>
+                        <ReactBootStrap.Nav.Link href="/Perfil">
+                            Perfil
                         </ReactBootStrap.Nav.Link>
 
                     </ReactBootStrap.Nav>

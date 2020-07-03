@@ -13,7 +13,7 @@ class Carro extends Component {
                         Shipping cart
                         <a href="" className="btn btn-outline-info btn-sm pull-right">Continiu shopping</a>
                         <div className="clearfix"></div>
-                    </div>
+                    </div>  
                     <div className="card-body">
                         <div className="row">
                             <div className="col-12 col-sm-12 col-md-2 text-center">
