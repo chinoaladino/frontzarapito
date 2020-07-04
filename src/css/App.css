@@ -150,6 +150,10 @@ footer a {
   padding: 0;
   width: 25px;
   z-index: 3
+} 
+
+#boton{
+  margin-left: 1010px;
 }
 
 .quantity .minus:hover, .quantity .plus:hover {

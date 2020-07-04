@@ -11,6 +11,7 @@ import {
 import Footer from './Footer';
 import Inicio from './Inicio';
 import Profile from './Perfil';
+import Register from './Register';
 import {UserContextProvider} from '../context/UserContext';
 
 
@@ -28,7 +29,9 @@ export default function App() {
           </Route>
           <Route component={Carro} exact path="/Carro">
           </Route>
-          <Route component={Profile} path="/Perfil">
+          <Route component={Profile} exact path="/Perfil">
+          </Route>
+          <Route component={Register} exact path="/registrarse">
           </Route>
         </Switch>
         <Footer />

@@ -91,9 +91,9 @@ export default function Navigation() {
 
                                 </form>
                                 <div className="dropdown-divider"></div>
-                                <Link to='/Perfil' className="dropdown-item">
+                                <Link to='/registrarse' className="dropdown-item">
                                     ¿Eres nuevo? Registrate aqui
-                                    </Link>
+                                </Link>
                                 <a className="dropdown-item" href="/"></a>
                                 <Link to='/Perfil' className="dropdown-item">
                                     ¿Olvidaste tu contraseña?

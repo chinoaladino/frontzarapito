@@ -112,15 +112,15 @@ export default function Perfil() {
                                                                     <label>Email Notifications</label>
                                                                     <div className="custom-controls-stacked px-2">
                                                                         <div className="custom-control custom-checkbox">
-                                                                            <input type="checkbox" className="custom-control-input" id="notifications-blog" defaultChecked ="" />
+                                                                            <input type="checkbox" className="custom-control-input" id="notifications-blog" defaultChecked="" />
                                                                             <label className="custom-control-label" htmlFor="notifications-blog">Blog posts</label>
                                                                         </div>
                                                                         <div className="custom-control custom-checkbox">
-                                                                            <input type="checkbox" className="custom-control-input" id="notifications-news" defaultChecked ="" />
+                                                                            <input type="checkbox" className="custom-control-input" id="notifications-news" defaultChecked="" />
                                                                             <label className="custom-control-label" htmlFor="notifications-news">Newsletter</label>
                                                                         </div>
                                                                         <div className="custom-control custom-checkbox">
-                                                                            <input type="checkbox" className="custom-control-input" id="notifications-offers" defaultChecked ="" />
+                                                                            <input type="checkbox" className="custom-control-input" id="notifications-offers" defaultChecked="" />
                                                                             <label className="custom-control-label" htmlFor="notifications-offers">Personal Offers</label>
                                                                         </div>
                                                                     </div>
