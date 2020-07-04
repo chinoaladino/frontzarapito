@@ -5,7 +5,6 @@ import '../css/App.css';
 class Carro extends Component {
     render() {
         return (
-
             <div>
                 <div className="card shopping-cart">
                     <div className="card-header bg-dark text-light">
@@ -31,10 +30,10 @@ class Carro extends Component {
                                 </div>
                                 <div className="col-4 col-sm-4 col-md-4">
                                     <div className="quantity">
-                                        <input type="button" value="+" className="plus" />
-                                        <input type="number" step="1" max="99" min="1" value="1" title="Qty" className="qty"
+                                        <input type="button" defaultValue="+" className="plus" />
+                                        <input type="number" step="1" max="99" min="1" defaultValue="1" title="Qty" className="qty"
                                             size="4" />
-                                        <input type="button" value="-" className="minus" />
+                                        <input type="button" defaultValue="-" className="minus" />
                                     </div>
                                 </div>
                                 <div className="col-2 col-sm-2 col-md-2 text-right">
@@ -61,10 +60,10 @@ class Carro extends Component {
                                 </div>
                                 <div className="col-4 col-sm-4 col-md-4">
                                     <div className="quantity">
-                                        <input type="button" value="+" className="plus" />
-                                        <input type="number" step="1" max="99" min="1" value="1" title="Qty" className="qty"
+                                        <input type="button" defaultValue="+" className="plus" />
+                                        <input type="number" step="1" max="99" min="1" defaultValue="1" title="Qty" className="qty"
                                             size="4" />
-                                        <input type="button" value="-" className="minus" />
+                                        <input type="button" defaultValue="-" className="minus" />
                                     </div>
                                 </div>
                                 <div className="col-2 col-sm-2 col-md-2 text-right">
@@ -86,7 +85,7 @@ class Carro extends Component {
                                     <input type="text" className="form-control" placeholder="cupone code" />
                                 </div>
                                 <div className="col-6">
-                                    <input type="submit" className="btn btn-default" value="Use cupone" />
+                                    <input type="submit" className="btn btn-default" defaultValue="Use cupone" />
                                 </div>
                             </div>
                         </div>

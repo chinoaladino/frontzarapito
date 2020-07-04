@@ -5,9 +5,8 @@ import React, { Component } from 'react';
 export default class Productos extends Component {
 
     state = {
-    productos: []
-   
-}
+        productos: []
+    }
 
 
     async componentDidMount(){

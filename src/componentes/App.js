@@ -1,43 +1,40 @@
-import React, { Component } from 'react';
+import React, { Suspense } from "react";
+
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './Navigation';
 import Carro from './Carro';
 import {
-  BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom";
+} from "wouter";
 import Footer from './Footer';
 import Inicio from './Inicio';
-import { render } from '@testing-library/react';
 import Profile from './Perfil';
+import {UserContextProvider} from '../context/UserContext';
 
-class App extends Component {
 
-  render(){
-    return (
+export default function App() {
 
+  return (
+    <UserContextProvider>
       <div className="App">
+      <Suspense fallback={null}>
+
         <Navigation>
         </Navigation>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <Inicio />
-            </Route>
-            <Route exact path="/Carro">
-              <Carro />
-            </Route>
-            <Route exact path="/Perfil">
-            <Profile/>
-            </Route>
-          </Switch>
-        </Router>
+        <Switch>
+          <Route component={Inicio} exact path="/">
+          </Route>
+          <Route component={Carro} exact path="/Carro">
+          </Route>
+          <Route component={Profile} path="/Perfil">
+          </Route>
+        </Switch>
         <Footer />
-      </div>
-    );
-  }
-}
+        </Suspense>
 
-export default App;
+      </div>
+    </UserContextProvider>
+  );
+}
