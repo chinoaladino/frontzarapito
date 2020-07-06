@@ -6,7 +6,7 @@ class Register extends Component {
     render() {
         return (
 
-            <div className="container mt-3" style={{border: "1px solid #CED4DA", padding: "20px", borderRadius: "10px"}}>
+            <div className="container mt-3" style={{ border: "1px solid #CED4DA", padding: "20px", borderRadius: "10px" }}>
                 <form>
                     <div className="form-group row">
                         <label htmlFor="" className="col-sm-2 col-fomr-label">Rut</label>
@@ -48,14 +48,14 @@ class Register extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <div className="form-check" style={{marginLeft: "740px"}}>
+                        <div className="form-check" style={{ marginLeft: "740px" }}>
                             <input className="form-check-input" type="checkbox" defaultValue="" id="invalidCheck2" required />
                             <label className="form-check-label" htmlFor="invalidCheck2">
                                 Aceptas las condiciones y terminos del servicio
                             </label>
                         </div>
                     </div>
-                    <button className="btn btn-primary" id="boton"  type="submit">Registrar</button>
+                    <button className="btn btn-primary" id="boton" type="submit">Registrar</button>
                 </form>
             </div>
 
@@ -63,12 +63,3 @@ class Register extends Component {
     }
 }
 export default Register;
-
-
-
-//rut
-//email
-//nombre
-//apellido
-//telefono
-//password

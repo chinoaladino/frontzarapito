@@ -94,8 +94,8 @@ export default function Navigation() {
                                 <Link to='/registrarse' className="dropdown-item">
                                     ¿Eres nuevo? Registrate aqui
                                 </Link>
-                                <a className="dropdown-item" href="/"></a>
-                                <Link to='/Perfil' className="dropdown-item">
+                                <a className="dropdown-item" href="/recuperar-password"></a>
+                                <Link to='/recuperar-password' className="dropdown-item">
                                     ¿Olvidaste tu contraseña?
                                     </Link>
                             </ReactBootStrap.NavDropdown>
