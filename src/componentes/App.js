@@ -13,6 +13,7 @@ import Inicio from './Inicio';
 import Profile from './Perfil';
 import Register from './Register';
 import RecPass from './RecPass';
+import AddProduct from './AddProduct';
 
 import {UserContextProvider} from '../context/UserContext';
 
@@ -39,8 +40,7 @@ export default function App() {
           </Route>
         </Switch>
         <Footer />
-        </Suspense>
-
+        </Suspense>      
       </div>
     </UserContextProvider>
   );
