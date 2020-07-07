@@ -14,6 +14,8 @@ import Profile from './Perfil';
 import Register from './Register';
 import RecPass from './RecPass';
 import AddProduct from './AddProduct';
+import MisProductos from './MisProductos';
+import UpdateProductos from './UpdatePrpducts';
 
 import {UserContextProvider} from '../context/UserContext';
 
@@ -37,8 +39,8 @@ export default function App() {
           <Route component={Register} exact path="/registrarse">
           </Route>
           <Route component={RecPass} exact path="/recuperar-password">
-          </Route>
-        </Switch>
+          </Route>     
+        </Switch>      
         <Footer />
         </Suspense>      
       </div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class AddProduct extends Component {
-    render() {
+class UpdateProductos extends Component{
+    render(){
         return (
             <div className="container" style={{ border: "1px solid #CED4DA", padding: "20px", borderRadius: "10px" }}>
                 <form>
@@ -33,13 +33,11 @@ class AddProduct extends Component {
                                 accept="image/png, image/jpeg" />
                         </div>
                     </div>
-                    <button className="btn btn-primary" id="boton" type="submit">Registrar</button>
+                    <button className="btn btn-primary" id="boton" type="submit">Modificar</button>
                 </form>
             </div>
         );
     }
 }
 
-//mis pedidos
-
-export default AddProduct;
+export default UpdateProductos;
