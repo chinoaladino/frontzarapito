@@ -1,6 +1,7 @@
 import axios from 'axios';
+
  
-export default function login({ email, password }) {
+export default function loginAdmin({ email, password }) {
     const user = {
         email: email,
         password: password

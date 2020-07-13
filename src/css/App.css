@@ -156,6 +156,10 @@ footer a {
   margin-left: 1010px;
 }
 
+#buttonrecoverypassword{
+  margin-left: 400px;
+}
+
 .quantity .minus:hover, .quantity .plus:hover {
   background-color: #dad8da
 }
@@ -175,5 +179,18 @@ footer a {
     transform: rotate(360deg);
   }
 }
+
+.card-title{ font-weight:300; }
+
+
+
+.login-form{ 
+  width:350px;
+  
+  margin:auto;
+}
+
+
+
 
 

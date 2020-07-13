@@ -2,31 +2,28 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 class RecPass extends Component {
     render() {
         return (
-            <div>
-                <div className="container" style={{padding: "10px", borderRadius:" 10px", border: "1px solid #CED4DA"}}>
-                    <form>
-                        <div className="form-group row">
-                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
-                                Correo
-                        </label>
-                            <div className="col-sm-10">
-                                <input type="email" className="form-control" id="inputEmail3" placeholder="Correo electronico">
-                                </input>
-                            </div>
+            <>
+                <div class="card login-form">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Recuperar contraseña </h3>
+
+                        <div class="card-text">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Enter your email address and we will send you a link to reset your password.</label>
+                                    <input type="email" class="form-control form-control-sm" placeholder="Enter your email address" />
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block">Send password reset email</button>
+                            </form>
                         </div>
-                        <div className="form-group row">
-                            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
-                            <div className="col-sm-10">
-                                <input type="password" className="form-control" id="inputPassword3" placeholder="Password" />
-                            </div>
-                        </div>
-                        <button className="btn btn-primary" id="boton"   type="submit">Registrar</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 }

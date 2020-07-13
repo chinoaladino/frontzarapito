@@ -10,7 +10,7 @@ class Carro extends Component {
                     <div className="card-header bg-dark text-light">
                         <i className="fa fa-shopping-cart" aria-hidden="true"></i>  
                         Shipping cart
-                        <a href="" className="btn btn-outline-info btn-sm pull-right">Continiu shopping</a>
+                        <a className="btn btn-outline-info btn-sm pull-right">Continiu shopping</a>
                         <div className="clearfix"></div>
                     </div>  
                     <div className="card-body">
@@ -75,7 +75,7 @@ class Carro extends Component {
                         </div>
                         <hr />
                         <div className="pull-right">
-                            <a href="" className="btn btn-outline-secondary pull-right">Update shopping cart</a>
+                            <a className="btn btn-outline-secondary pull-right">Update shopping cart</a>
                         </div>
                     </div>
                     <div className="card-footer">
@@ -90,7 +90,7 @@ class Carro extends Component {
                             </div>
                         </div>
                         <div className="pull-right" style={{ margin: "10px" }}>
-                            <a href="" className="btn btn-success pull-right">Checkout</a>
+                            <a className="btn btn-success pull-right">Checkout</a>
                             <div className="pull-right" style={{ margin: "5px" }}>
                                 Total price: <b>50.00€</b>
                             </div>

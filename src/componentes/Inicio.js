@@ -40,6 +40,9 @@ class Inicio extends Component {
                 </Container>
 
                 <Container>
+                    <Productos>
+                        
+                    </Productos>
                 </Container>
             </div>
         );
