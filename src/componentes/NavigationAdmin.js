@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import { useLocation, Link } from 'wouter';
-import useUser from '../hooks/useUser';
+import useLoginAdmin from '../hooks/useLoginAdmin';
 import { useEffect } from "react";
 
 export default function Navigation() {
@@ -13,7 +13,7 @@ export default function Navigation() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [, navigate] = useLocation()
-    const { loginAdmin, logout, isLogged, hasLoginError } = useUser()
+    const { loginAdmin, logout, isLoggedAdmin, hasLoginError } = useLoginAdmin()
 
 
     const handleLogout = e => {
@@ -26,8 +26,8 @@ export default function Navigation() {
     };
 
     useEffect(() => {
-        if (isLogged) navigate('/')
-    }, [isLogged, navigate])
+        if (isLoggedAdmin) navigate('/')
+    }, [isLoggedAdmin, navigate])
 
 
     return (
@@ -56,7 +56,7 @@ export default function Navigation() {
                 </ReactBootStrap.Nav>
                 <ReactBootStrap.Nav>
                     {
-                        isLogged
+                        isLoggedAdmin
                             ?
                             <ReactBootStrap.NavDropdown aria-expanded="false" title="Usuario" id="collasible-nav-dropdown">
                                 <Link to='/Perfil' className="dropdown-item">

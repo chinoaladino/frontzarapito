@@ -1,18 +1,24 @@
 import axios from 'axios';
 
-export default function addproduct({nombre, codigo, stock, foto}){
+export default function addproduct({codigo, nombre, precio, stock, foto }){
     
     const data = new FormData() 
-    data.set('nombre', nombre);
     data.set('codigo', codigo);
+    data.set('nombre', nombre);
+    data.set('precio', precio);
     data.set('stock', stock);
     data.append('foto', foto)
-
-    return  axios.post(`http://localhost:8000/productos/agregar/` , data)
+    const token = window.sessionStorage.getItem('tokenadmin')
+    console.log(token)
+   
+    return  axios.post(`http://localhost:3000/productos/agregar/` , data, {
+        headers: { Authorization: "Bearer " + token }
+    })
         .then(res => {
             return "ok"
         })
         .catch(err => {
+            console.log(err.response)
             return err.response.data.error
         })
 }

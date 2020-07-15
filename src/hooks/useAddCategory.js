@@ -1,24 +1,24 @@
 import { useCallback, useState } from 'react';
-import addproductServices from '../services/addproduct';
-export default function useAddProduct() {
+import addcategoryServices from '../services/addcategory';
+
+export default function useAddCategory() {
     const [state, setState] = useState({ succeed: false, error: false, errormsj: '' })
 
-    const addproduct = useCallback(({codigo, nombre, precio, stock, foto }) => {
-        addproductServices({ codigo, nombre, precio, stock, foto  })
-            .then(productres => {
-                if (productres === "ok") {
+    const addcategory = useCallback(({ categoria }) => {
+        addcategoryServices({ categoria })
+            .then(categoryres => {
+                if (categoryres === "ok") {
                     setState({ succeed: true, error: false, errormsj: '' })
-
 
                 } else {
                     let errores = []
-                    if (productres.length !== 55) {
-                        for (let i = 0; i < productres.length; i++) {
-                            errores.push(productres[i].message)
+                    if (categoryres.length !== 55) {
+                        for (let i = 0; i < categoryres.length; i++) {
+                            errores.push(categoryres[i].message)
 
                         }
                     } else {
-                        errores.push(productres)
+                        errores.push(categoryres)
                     }
 
                     setState({ succeed: false, error: true, errormsj: errores })
@@ -26,13 +26,12 @@ export default function useAddProduct() {
                 }
             })
             .catch(err => {
-
                 console.log(err)
             })
     })
 
     return {
-        addproduct,
+        addcategory,
         hasAddError: state.error,
         succeedAdd: state.succeed,
         errorMsj: state.errormsj

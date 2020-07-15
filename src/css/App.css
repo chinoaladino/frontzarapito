@@ -182,6 +182,9 @@ footer a {
 
 .card-title{ font-weight:300; }
 
+.card{
+  margin-bottom: 30px;
+}
 
 
 .login-form{ 

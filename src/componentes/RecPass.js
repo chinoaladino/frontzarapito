@@ -3,7 +3,6 @@ import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useRecoveryPass from '../hooks/useRecoveryPass';
 
-
 export default function RecPass() {
     const [email, setEmail] = useState("")
     const { recoveryPass, hasRecoveryError, succeedRecovery, errorMsj } = useRecoveryPass()
@@ -33,7 +32,7 @@ export default function RecPass() {
                 }
                 {succeedRecovery &&
                     <div className="alert alert-success alert-styled-left">
-                        El registro del producto fue exitoso
+                        La solicitud fue exitosa
                                     </div>
                 }
                             <div className="form-group">

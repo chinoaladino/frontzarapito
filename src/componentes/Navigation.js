@@ -6,6 +6,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import { useLocation, Link } from 'wouter';
 import useLogin from '../hooks/useLogin';
+import useLoginAdmin from '../hooks/useLoginAdmin';
 import { useEffect } from "react";
 
 export default function Navigation() {
@@ -14,10 +15,15 @@ export default function Navigation() {
     const [password, setPassword] = useState("")
     const [, navigate] = useLocation()
     const { login, logout, isLogged, hasLoginError } = useLogin()
+    const { loginAdmin, logoutAdmin, isLoggedAdmin, hasLoginAdminError } = useLoginAdmin()
 
 
     const handleLogout = e => {
         logout();
+    }
+
+    const handleLogoutAdmin = e => {
+        logoutAdmin();
     }
 
     const handleSubmit = async (e) => {
@@ -26,8 +32,13 @@ export default function Navigation() {
     };
 
     useEffect(() => {
-        if (isLogged) navigate('/')
-    }, [isLogged, navigate])
+        if (isLoggedAdmin){
+            navigate('/')
+        } else{
+            console.log(isLogged, isLoggedAdmin)
+
+        }
+    }, [isLogged || isLoggedAdmin, navigate])
 
 
     return (
@@ -56,9 +67,25 @@ export default function Navigation() {
                 </ReactBootStrap.Nav>
                 <ReactBootStrap.Nav>
                     {
-                        isLogged
+                        isLoggedAdmin
                             ?
-                            <ReactBootStrap.NavDropdown aria-expanded="false" title="Usuario" id="collasible-nav-dropdown">
+                            <>
+                              <ReactBootStrap.NavDropdown aria-expanded="false" title={<span><i className="fa fa-user fa-fw"></i> {localStorage.getItem('email')}</span>}  id="collasible-nav-dropdown">
+                                <Link to='/Perfil' className="dropdown-item">
+                                    Editar perfil
+                                    </Link>
+                                <Link to='/gestionarproductos' className="dropdown-item">
+                                    Gestionar productos
+                                    </Link>
+                                <Link href="/" onClick={handleLogoutAdmin} className="dropdown-item">
+                                    Cerrar sesion
+                                    </Link>
+                            </ReactBootStrap.NavDropdown>
+                            </>
+
+                        :isLogged
+                            ?
+                            <ReactBootStrap.NavDropdown aria-expanded="false" title={<span><i className="fa fa-user fa-fw"></i> {localStorage.getItem('email')}</span>} id="collasible-nav-dropdown">
                                 <Link to='/Perfil' className="dropdown-item">
                                     Editar perfil
                                     </Link>
@@ -66,13 +93,13 @@ export default function Navigation() {
                                     Cerrar sesion
                                     </Link>
                             </ReactBootStrap.NavDropdown>
-                            : <ReactBootStrap.NavDropdown title="Iniciar sesion" id="collasible-nav-dropdown">
+                            : <><span className="glyphicon glyphicon-user"></span> <ReactBootStrap.NavDropdown  title={<span><i className="fa fa-sign-in"></i> Iniciar sesion</span>} id="collasible-nav-dropdown">
                                 <form className="px-4 py-3" onSubmit={handleSubmit}>
 
                                     <div className="form-group">
                                         {hasLoginError &&
                                             <div className="alert alert-danger alert-styled-left">
-                                        Correo o contraseña inválidos
+                                                Correo o contraseña inválidos
                                     </div>
                                         }
                                         <label htmlFor="exampleDropdownFormEmail1">Correo electronico</label>
@@ -80,7 +107,7 @@ export default function Navigation() {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="exampleDropdownFormPassword1">Contraseña</label>
-                                        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} name="password" className="form-control" id="exampleDropdownFormPassword1" placeholder="Contraseña"  required/>
+                                        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} name="password" className="form-control" id="exampleDropdownFormPassword1" placeholder="Contraseña" required />
                                     </div>
                                     <div className="form-check">
                                         <input type="checkbox" className="form-check-input" id="dropdownCheck" />
@@ -100,6 +127,7 @@ export default function Navigation() {
                                     ¿Olvidaste tu contraseña?
                                     </Link>
                             </ReactBootStrap.NavDropdown>
+                            </>
                     }
                 </ReactBootStrap.Nav>
                 <Form inline >

@@ -9,7 +9,7 @@ export default function updateproduct({nombre, codigo, stock, foto}){
         data.append('foto', foto)
     }
 
-    return  axios.put(`http://localhost:8000/productos/id:`+codigo,data)
+    return  axios.put(`http://localhost:3000/productos/id:`+codigo,data)
         .then(res => {
             return "ok"
         })

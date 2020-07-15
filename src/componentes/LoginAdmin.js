@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLocation, Link } from 'wouter';
-import useLogin from '../hooks/useLogin';
+import useLoginAdmin from '../hooks/useLoginAdmin';
 import { useEffect } from "react";
 
 export default function App() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [, navigate] = useLocation()
-    const { loginAdmin, isLogged, hasLoginError } = useLogin()
+    const { loginAdmin, isLoggedAdmin, hasLoginError } = useLoginAdmin()
 
 
     const handleSubmit = async (e) => {
@@ -17,8 +17,8 @@ export default function App() {
     };
 
     useEffect(() => {
-        if (isLogged) navigate('/')
-    }, [isLogged, navigate])
+        if (isLoggedAdmin) navigate('/')
+    }, [isLoggedAdmin, navigate])
 
     return (
         <>

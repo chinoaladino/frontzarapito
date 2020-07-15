@@ -6,7 +6,7 @@ export default function recoverypass({email}){
         email: email
     }
 
-    return  axios.post(`http://localhost:8000/login/reset/` , user)
+    return  axios.post(`http://localhost:3000/login/reset/` , user)
         .then(res => {
             return "ok"
         })
