@@ -1,19 +1,21 @@
 import axios from 'axios';
 
-export default function updateproduct({nombre, codigo, stock, foto}){
-    
-    const data = new FormData() 
-    data.set('nombre', nombre);
-    data.set('stock', stock);
-    if (foto !== '') {
-        data.append('foto', foto)
-    }
+export default function updateproduct({ codigo, cat, nombre, precio, stock, foto }) {
 
-    return  axios.put(`http://localhost:3000/productos/id:`+codigo,data)
+    const products = {
+        stock: stock
+    }
+    const token = window.sessionStorage.getItem('tokenadmin')
+
+    return axios.put('http://localhost:3000/productos/' + codigo, products, {
+        headers: { Authorization: "Bearer " + token }
+
+    })
         .then(res => {
             return "ok"
         })
         .catch(err => {
+            console.log(err)
             return err.response.data.error
         })
 }

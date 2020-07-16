@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './Navigation';
@@ -16,31 +15,22 @@ import Register from './Register';
 import RecPass from './RecPass';
 import AddProduct from './AddProduct';
 import ShowAllProducts from './ShowAllProducts';
-import MisProductos from './MisProductos';
 import UpdateProductos from './UpdateProducts';
-import useLogin from '../hooks/useLogin';
 import LoginAdmin from './LoginAdmin';
+import DeleteProduct from './DeleteProduct';
 import AddCategory from './AddCategory';
 import { UserContextProvider } from '../context/UserContext';
 import { UserContextProviderAdmin } from '../context/UserContextAdmin';
 
-
 export default function App() {
-
-  const { loginAdmin, logout, isLoggedAdmin, hasLoginError } = useLogin()
-
 
   return (
     <UserContextProviderAdmin>
       <UserContextProvider>
         <div className="App">
           <Suspense fallback={null}>
-
-
             <Navigation>
             </Navigation>
-
-
             <Switch>
               <Route component={Inicio} exact path="/">
               </Route>
@@ -54,13 +44,13 @@ export default function App() {
               </Route>
               <Route component={LoginAdmin} exact path="/Admin">
               </Route>
-              <Route component={UpdateProductos} exact path="/editaproductos">
+              <Route component={UpdateProductos} exact path="/gestionarproductos/editaproductos">
               </Route>
               <Route component={AddProduct} exact path="/gestionarproductos/agregarproductos">
               </Route>
               <Route component={ShowAllProducts} exact path="/gestionarproductos">
               </Route>
-              <Route component={MisProductos} exact path="/mostrarproductos">
+              <Route component={DeleteProduct} exact path="/gestionarproductos/eliminarproducto">
               </Route>
               <Route component={AddCategory} exact path="/gestionarproductos/agregarcategoria">
               </Route>

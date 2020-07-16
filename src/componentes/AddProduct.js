@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useAddProduct from '../hooks/useAddProduct';
-import {
-    Switch,
-    Route,
-    Link
-} from "wouter";
+import { Link } from "wouter";
 import axios from 'axios';
 
 export default function AddProduct() {
@@ -16,7 +12,7 @@ export default function AddProduct() {
     const [precio, setPrecio] = useState('')
     const [stock, setStock] = useState('')
     const [foto, setFoto] = useState('')
-    const nada = ''
+    const [cat, setCat] = useState('')
     const [state, setState] = useState({ cate: [] })
 
     const { addproduct, hasAddError, succeedAdd, errorMsj } = useAddProduct()
@@ -30,9 +26,20 @@ export default function AddProduct() {
         return () => ac.abort();
     }, [])
 
+    useEffect(() => {
+        if (succeedAdd) {
+            setCodigo('')
+            setNombre('')
+            setPrecio('')
+            setStock('')
+            setFoto('')
+        }
+    }, [succeedAdd, setCat])
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        addproduct({ codigo, nombre, precio, stock, foto })
+        addproduct({ codigo, cat, nombre, precio, stock, foto })
+
     };
 
     return (
@@ -49,17 +56,12 @@ export default function AddProduct() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to='' className="nav-link">
-                        Buscar productos
-                    </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='' className="nav-link">
+                    <Link to='/gestionarproductos/editaproductos' className="nav-link">
                         Modificar productos
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to='' className="nav-link">
+                    <Link to='/gestionarproductos/eliminarproducto' className="nav-link">
                         Eliminar productos
                     </Link>
                 </li>
@@ -82,6 +84,7 @@ export default function AddProduct() {
                             })}                     </div>
                     }
                     {succeedAdd &&
+
                         <div className="alert alert-success alert-styled-left">
                             El registro del producto fue exitoso
                                     </div>
@@ -94,12 +97,14 @@ export default function AddProduct() {
                         </div>
                     </div>
                     <div className="form-group row">
-                        <label htmlFor="" className="col-sm-2 col-fomr-label">Codigo</label>
+                        <label htmlFor="" className="col-sm-2 col-fomr-label"> Categoria</label>
                         <div className="col-sm-10">
-                            <select name="categorias" id="cars" key>
+                            <select name="categorias" className="form-control" onChange={(e) => setCat(e.target.value)}>
+                                <option>Seleccione categoria</option>
+
                                 {
                                     state.cate.map(cat => (
-                                        <option value={cat.nombre} key={cat._id}>{cat.nombre}</option>
+                                        <option value={cat._id} key={cat._id}>{cat.nombre}</option>
                                     ))
 
                                 }
@@ -128,10 +133,18 @@ export default function AddProduct() {
                     <div className="form-group row">
                         <label htmlFor="" className="col-sm-2 col-fomr-label">Fotos</label>
                         <div className="col-sm-10">
-                            <input type="file"
-                                onChange={(e) => setFoto(e.target.files[0])}
-                                id="fotos" name="fotos"
-                                accept="image/png, image/jpeg" required />
+
+                            <label className="input-group-append mb-0">
+                                <span className="btn btn-primary input-file-btn">
+                                    Subir imagenes
+                                <input type="file" hidden
+                                        onChange={(e) => setFoto(e.target.files)}
+                                        id="fotos" name="fotos"
+                                        accept="image/png, image/jpeg"
+                                        multiple="multiple"
+                                        required />
+                                </span>
+                            </label>
                         </div>
                     </div>
                     <button className="btn btn-primary" id="boton" type="submit">Registrar</button>

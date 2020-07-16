@@ -72,13 +72,13 @@ export default function Navigation() {
                             <>
                               <ReactBootStrap.NavDropdown aria-expanded="false" title={<span><i className="fa fa-user fa-fw"></i> {localStorage.getItem('email')}</span>}  id="collasible-nav-dropdown">
                                 <Link to='/Perfil' className="dropdown-item">
-                                    Editar perfil
+                                <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil
                                     </Link>
                                 <Link to='/gestionarproductos' className="dropdown-item">
-                                    Gestionar productos
+                                <i className="fa fa-sign-in"></i> Gestionar productos 
                                     </Link>
                                 <Link href="/" onClick={handleLogoutAdmin} className="dropdown-item">
-                                    Cerrar sesion
+                                <i className="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesion
                                     </Link>
                             </ReactBootStrap.NavDropdown>
                             </>
@@ -87,10 +87,10 @@ export default function Navigation() {
                             ?
                             <ReactBootStrap.NavDropdown aria-expanded="false" title={<span><i className="fa fa-user fa-fw"></i> {localStorage.getItem('email')}</span>} id="collasible-nav-dropdown">
                                 <Link to='/Perfil' className="dropdown-item">
-                                    Editar perfil
+                                <i className="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil
                                     </Link>
                                 <Link href="/" onClick={handleLogout} className="dropdown-item">
-                                    Cerrar sesion
+                                <i className="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesion
                                     </Link>
                             </ReactBootStrap.NavDropdown>
                             : <><span className="glyphicon glyphicon-user"></span> <ReactBootStrap.NavDropdown  title={<span><i className="fa fa-sign-in"></i> Iniciar sesion</span>} id="collasible-nav-dropdown">

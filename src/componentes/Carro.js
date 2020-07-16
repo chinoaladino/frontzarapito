@@ -9,28 +9,31 @@ class Carro extends Component {
     }
     async componentDidMount() {
         let carros = []
-        let carros2 = []
         carros = JSON.parse(localStorage.getItem('carro'))
-        console.log(carros)
-        console.log(this.name(carros))
         //this.setState({ productos: res.data })
-        
+        this.consultar(carros)
 
 
     }
-    name(carros) {
-        return axios.get('http://localhost:3000/productos/', {
-            params: {
-                id: carros
-            }
-        })
-            .then((response) => {
-                console.log(response.data)
-                this.setState({productos: response.data})
-                
-                return response
+     consultar(carros) {
+        if (carros !== null) {
+            let res = []
+            console.log(carros)
+            for (let i = 0; i < carros.length+1; i++) {
+                return  axios.get('http://localhost:3000/productos/' + carros[i], {
 
-            })
+                })
+                    .then((response) => {
+                        res.push(response.data)
+                        console.log(res)
+                        return response
+                    })
+            }
+            console.log(res)
+            this.setState({ productos: res})
+
+        }
+
     }
     render() {
         return (
@@ -47,37 +50,37 @@ class Carro extends Component {
                             this.state.productos.map(producto => (
 
 
-                            <div className="row" key={producto.codigo} style={{ marginBottom: "30px" }} >
-                                <div className="col-12 col-sm-12 col-md-2 text-center">
-                                    <img className="img-responsive" src={producto.foto} alt="prewiew" width="120" height="80" />
-                                </div>
-                                <div className="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                                    <h4 className="product-name"><strong></strong></h4>
-                                    <h4>
-                                     <small>{producto.nombre}</small>
-                                    </h4>
-                                </div>
-                                <div className="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                                    <div className="col-3 col-sm-3 col-md-6 text-md-right" style={{ paddingtop: "5px" }}>
-                                        <h6><strong>{producto.precio} <span className="text-muted">x</span></strong></h6>
+                                <div className="row" key={producto.codigo} style={{ marginBottom: "30px" }} >
+                                    <div className="col-12 col-sm-12 col-md-2 text-center">
+                                        <img className="img-responsive" src={producto.foto} alt="prewiew" width="120" height="80" />
                                     </div>
-                                    <div className="col-4 col-sm-4 col-md-4">
-                                        <div className="quantity">
-                                            <input type="button" defaultValue="+" className="plus" />
-                                            <input type="number" step="1" max="99" min="1" defaultValue="1" title="Qty" className="qty"
-                                                size="4" />
-                                            <input type="button" defaultValue="-" className="minus" />
+                                    <div className="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                                        <h4 className="product-name"><strong></strong></h4>
+                                        <h4>
+                                            <small>{producto.nombre}</small>
+                                        </h4>
+                                    </div>
+                                    <div className="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                                        <div className="col-3 col-sm-3 col-md-6 text-md-right" style={{ paddingtop: "5px" }}>
+                                            <h6><strong>{producto.precio} <span className="text-muted">x</span></strong></h6>
+                                        </div>
+                                        <div className="col-4 col-sm-4 col-md-4">
+                                            <div className="quantity">
+                                                <input type="button" defaultValue="+" className="plus" />
+                                                <input type="number" step="1" max="99" min="1" defaultValue="1" title="Qty" className="qty"
+                                                    size="4" />
+                                                <input type="button" defaultValue="-" className="minus" />
+                                            </div>
+                                        </div>
+                                        <div className="col-2 col-sm-2 col-md-2 text-right">
+                                            <button type="button" className="btn btn-outline-danger btn-xs">
+                                                <i className="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
                                         </div>
                                     </div>
-                                    <div className="col-2 col-sm-2 col-md-2 text-right">
-                                        <button type="button" className="btn btn-outline-danger btn-xs">
-                                            <i className="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
                                 </div>
-                            </div>
-                            
-                               )
+
+                            )
                             )
                         }
 

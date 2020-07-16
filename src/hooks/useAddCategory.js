@@ -12,7 +12,7 @@ export default function useAddCategory() {
 
                 } else {
                     let errores = []
-                    if (categoryres.length !== 55) {
+                    if (categoryres.length !== 47) {
                         for (let i = 0; i < categoryres.length; i++) {
                             errores.push(categoryres[i].message)
 

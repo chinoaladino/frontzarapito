@@ -1,52 +1,136 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as ReactBootStrap from 'react-bootstrap';
 import {
-    Switch,
-    Route,
+    useLocation,
     Link
-  } from "wouter";
-  import MisProductos from './MisProductos';
-import UpdateProductos from './UpdateProducts';
-import AddProduct from './AddProduct';
+} from "wouter";
+import axios from 'axios';
+import useDeleteProduct from '../hooks/useDeleteProduct';
 
 export default function ManageProducts() {
+    const [state, setState] = useState({ products: [] })
+    const { deleteproduct, hasDeleteError, succeedDelete, errorMsj } = useDeleteProduct()
+    const [, navigate] = useLocation()
+
+    useEffect(() => {
+        const ac = new AbortController();
+        const datas = async () => {
+            const res = await axios.get('http://localhost:3000/productos')
+            setState({ products: res.data })
+        }
+        datas()
+        return () => ac.abort();
+    }, [])
+
+    const handleClickDelete = (codigo) => {
+        deleteproduct({ codigo })
+    }
+
+    const handleClickUpdate = (codigo) => {
+
+        localStorage.setItem('find', codigo)
+        navigate('/gestionarproductos/editaproductos')
+        
+    }
+
+    useEffect(() => {
+        if (succeedDelete) {
+            const datas = async () => {
+                const res = await axios.get('http://localhost:3000/productos')
+                setState({ products: res.data })
+            }
+            datas()
+        }
+       
+    }, [succeedDelete, ])
+
+    useEffect(() => {
+        if (succeedDelete) {
+            const datas = async () => {
+                const res = await axios.get('http://localhost:3000/productos')
+                setState({ products: res.data })
+            }
+            datas()
+        }
+       
+    }, [succeedDelete, ])
+
+
+
     return (
         <>
-        <div className="container" style={{marginTop: "40px"}}>
-            <ul className="nav nav-tabs">
-            <li className="nav-item">
-                    <Link to='/lenceria' className="nav-link active">
-                        Ver todos los productos
+            <div className="container" style={{ marginTop: "40px" }}>
+                <ul className="nav nav-tabs" style={{ marginBottom: "10px" }}>
+                    <li className="nav-item">
+                        <Link to='/lenceria' className="nav-link active">
+                            Ver todos los productos
                     </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='/gestionarproductos/agregarproductos' className="nav-link">
-                        Agregar productos
+                    </li>
+                    <li className="nav-item">
+                        <Link to='/gestionarproductos/agregarproductos' className="nav-link">
+                            Agregar productos
                     </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='' className="nav-link">
-                        Buscar productos
+                    </li>
+                    <li className="nav-item">
+                        <Link to='/gestionarproductos/editaproductos' className="nav-link">
+                            Modificar productos
                     </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='' className="nav-link">
-                        Modificar productos
+                    </li>
+                    <li className="nav-item">
+                        <Link to='/gestionarproductos/eliminarproducto' className="nav-link">
+                            Eliminar productos
                     </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='' className="nav-link">
-                        Eliminar productos
+                    </li>
+                    <li className="nav-item">
+                        <Link to='/gestionarproductos/agregarcategoria' className="nav-link">
+                            Agregar categorias
                     </Link>
-                </li>
-                <li className="nav-item">
-                    <Link to='/gestionarproductos/agregarcategoria' className="nav-link">
-                        Agregar categorias
-                    </Link>
-                </li>
-            </ul>
-            
+                    </li>
+                </ul>
+                <div className="container">
+                    {hasDeleteError &&
+                        <div className="alert alert-danger alert-styled-left">
+                            {errorMsj.map(error => {
+                                return (
+                                    <div key={error}>
+                                        *{error} <br />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    }
+                    {succeedDelete &&
+                        <div className="alert alert-success alert-styled-left">
+                            Se ha eliminado el producto
+                        </div>
+                    }
+                    <div className="col">
+                        <div className="row">
+                            {
+                                state.products.map(product => (
+                                    <div className="col-12 col-md-6 col-lg-4" key={product.codigo}>
+                                        <div className="card" >
+                                            <img className="card-img-top" src={product.fotos} alt="Card image cap" style={{ height: "350px" }} />
+                                            <div className="card-body">
+                                                <h4 className="card-title"><a href="product.html" title="View Product">{product.nombre}</a></h4>
+                                                <p className="card-text">{product.stock}</p>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <button onClick={() => handleClickDelete(product.codigo)} className="btn btn-danger btn-block" >Eliminar</button>
+                                                    </div>
+                                                    <div className="col">
+                                                        <button onClick={() => handleClickUpdate(product.codigo)} className="btn btn-warning btn-block">Editar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

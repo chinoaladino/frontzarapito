@@ -9,7 +9,6 @@ export default function loginAdmin({ email, password }) {
     return  axios.post(`http://localhost:3000/admin/login/`, user)
         .then(res => {
             const { token } = res.data
-            console.log(token)
             return token
         })
         .catch(err => {

@@ -1,27 +1,26 @@
 import React, { useEffect ,useState } from 'react';
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import useAddCategory from '../hooks/useAddCategory';
+import useDeleteProduct from '../hooks/useDeleteProduct';
 import { Link } from "wouter";
 
-export default function AddCategory() {
+export default function DeleteProduct() {
 
-    const [categoria, setCategoria] = useState('')
+    const [codigo, setCodigo] = useState('')
 
-    const { addcategory, hasAddError, succeedAdd, errorMsj } = useAddCategory()
+    const { deleteproduct, hasDeleteError, succeedDelete, errorMsj } = useDeleteProduct()
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addcategory({ categoria })
-        if (succeedAdd === true) {
-        }
+        deleteproduct({ codigo })
     };
 
     useEffect(() => {
-        if (succeedAdd ){
-            setCategoria('')
+        if (succeedDelete ){
+            setCodigo('')
+
         } 
-    }, [succeedAdd, setCategoria])
+    }, [succeedDelete, setCodigo])
 
     return (
         <div className="container" style={{ marginTop: "40px" }}>
@@ -42,19 +41,19 @@ export default function AddCategory() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to='/gestionarproductos/eliminarproducto' className="nav-link">
+                    <Link to='/gestionarproductos/eliminarproducto' className="nav-link active">
                         Eliminar productos
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to='/gestionarproductos/agregarcategoria' className="nav-link active">
+                    <Link to='/gestionarproductos/agregarcategoria' className="nav-link">
                         Agregar categorias
                     </Link>
                 </li>
             </ul>
             <div className="container" style={{ border: "1px solid #CED4DA", padding: "20px", borderRadius: "10px" }}>
                 <form onSubmit={handleSubmit}>
-                    {hasAddError &&
+                    {hasDeleteError &&
                         <div className="alert alert-danger alert-styled-left">
                             {errorMsj.map(error => {
                                 return (
@@ -62,31 +61,26 @@ export default function AddCategory() {
                                         *{error} <br />
                                     </div>
                                 )
-                            })}                     </div>
-                    }
-                    {succeedAdd &&
-                        <div className="alert alert-success alert-styled-left">
-                            Se ha registrado la categoria
-                    
+                            })}
                         </div>
                     }
-
-
+                    {succeedDelete &&
+                        <div className="alert alert-success alert-styled-left">
+                            Se ha eliminado el producto
+                        </div>
+                    }
                     <div className="form-group row">
-                        <label htmlFor="" className="col-sm-2 col-fomr-label">Nombre</label>
+                        <label htmlFor="" className="col-sm-2 col-fomr-label">Codigo</label>
                         <div className="col-sm-10">
-                            <input type="text" onChange={(e) => setCategoria(e.target.value)} value={categoria} className="form-control" placeholder="Nombre" required></input>
+                            <input type="number" onChange={(e) => setCodigo(e.target.value)} value={codigo} className="form-control" placeholder="Codigo" required/>
                         </div>
                     </div>
-                    <button className="btn btn-primary" id="boton" type="submit">Registrar</button>
+                    <button className="btn btn-primary" id="boton" type="submit">Eliminar</button>
                 </form>
             </div>
-
         </div>
 
     );
 }
 
-
-//mis pedidos
 

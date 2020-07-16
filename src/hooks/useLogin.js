@@ -35,6 +35,8 @@ export default function useUser() {
     const logout = useCallback(() =>{
         localStorage.removeItem('email');
         window.sessionStorage.removeItem('token')
+        localStorage.clear()
+        window.sessionStorage.clear()
         setTOKEN(null)
     }, [setTOKEN])
 

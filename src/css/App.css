@@ -153,7 +153,7 @@ footer a {
 } 
 
 #boton{
-  margin-left: 1010px;
+  margin-left: 975px;
 }
 
 #buttonrecoverypassword{
@@ -197,6 +197,21 @@ footer a {
 }
 
 
+.img-wrap {
+  position: relative;
+  width: 100px;
+  color: #c01508;
+  float: right;
+}
+.img-wrap .close {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 100;
+}
 
-
+.dropdown-menu .show{
+  width: 200px;
+  text-align: center;
+}
 

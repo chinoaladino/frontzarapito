@@ -1,39 +1,39 @@
 import { useCallback, useState } from 'react';
-import addproductServices from '../services/addproduct';
-export default function useAddProduct() {
+import deleteproductServices from '../services/deleteproduct';
+
+export default function useDeleteProduct() {
     const [state, setState] = useState({ succeed: false, error: false, errormsj: '' })
 
-    const addproduct = useCallback(({codigo, cat, nombre, precio, stock, foto }) => {
-        addproductServices({ codigo, cat, nombre, precio, stock, foto  })
+    const deleteproduct = useCallback(({ codigo }) => {
+        deleteproductServices({ codigo })
             .then(productres => {
                 if (productres === "ok") {
                     setState({ succeed: true, error: false, errormsj: '' })
 
                 } else {
                     let errores = []
-                    console.log(productres.length)
-                    if (productres.length > 1 && productres.length < 10) {
+                    if (productres.length !== 41) {
                         for (let i = 0; i < productres.length; i++) {
                             errores.push(productres[i].message)
+
                         }
                     } else {
                         errores.push(productres)
                     }
-
+                    console.log(productres)
                     setState({ succeed: false, error: true, errormsj: errores })
 
                 }
             })
             .catch(err => {
-
                 console.log(err)
             })
     })
 
     return {
-        addproduct,
-        hasAddError: state.error,
-        succeedAdd: state.succeed,
+        deleteproduct,
+        hasDeleteError: state.error,
+        succeedDelete: state.succeed,
         errorMsj: state.errormsj
     }
 }
