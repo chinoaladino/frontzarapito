@@ -8,7 +8,7 @@ export default function deleteproduct({ codigo }){
     
     const token = window.sessionStorage.getItem('tokenadmin')
    
-    return axios.delete('http://localhost:3000/productos/'+codigo, {
+    return axios.delete('https://api.zarapito.xyz/productos/'+codigo, {
         headers: { Authorization: "Bearer " + token }
        
       })

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLocation, Link } from 'wouter';
 import useLoginAdmin from '../hooks/useLoginAdmin';
+import useLogin from '../hooks/useLoginAdmin';
 import { useEffect } from "react";
 
 export default function App() {
@@ -9,12 +10,22 @@ export default function App() {
     const [password, setPassword] = useState("")
     const [, navigate] = useLocation()
     const { loginAdmin, isLoggedAdmin, hasLoginError } = useLoginAdmin()
+    const { isLogged } = useLogin()
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         loginAdmin({ email, password })
     };
+ 
+
+    useEffect(() => {
+        const ac = new AbortController();
+        if (sessionStorage.getItem('token') !== null){
+            navigate('/')
+        }
+        return () => ac.abort();
+    },  [])
 
     useEffect(() => {
         if (isLoggedAdmin) navigate('/')
@@ -22,6 +33,10 @@ export default function App() {
 
     return (
         <>
+            <div className="container" style={{ padding: "2%", marginTop: "9px" }}>
+
+            </div>
+            <div className="container" style={{ border: "1px solid #CED4DA", padding: "10px", borderRadius: "10px", width:"400px" }}>
             <form className="px-4 py-3" onSubmit={handleSubmit}>
 
                 <div className="form-group">
@@ -52,6 +67,7 @@ export default function App() {
             <Link to='/recuperar-password' className="dropdown-item">
                 ¿Olvidaste tu contraseña?
             </Link>
+        </div>
         </>
     );
 }

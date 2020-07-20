@@ -8,14 +8,16 @@ import { useLocation, Link } from 'wouter';
 import useLogin from '../hooks/useLogin';
 import useLoginAdmin from '../hooks/useLoginAdmin';
 import { useEffect } from "react";
+import axios from 'axios';
 
 export default function Navigation() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [, navigate] = useLocation()
+    const [busqueda, setBusqueda] = useState('')
     const { login, logout, isLogged, hasLoginError } = useLogin()
-    const { loginAdmin, logoutAdmin, isLoggedAdmin, hasLoginAdminError } = useLoginAdmin()
+    const { logoutAdmin, isLoggedAdmin, hasLoginAdminError } = useLoginAdmin()
 
 
     const handleLogout = e => {
@@ -34,13 +36,21 @@ export default function Navigation() {
     useEffect(() => {
         if (isLoggedAdmin){
             navigate('/')
-        } else{
-            console.log(isLogged, isLoggedAdmin)
-
-        }
+        } 
     }, [isLogged || isLoggedAdmin, navigate])
 
-
+    const handleClick = async (e) => {
+        e.preventDefault();
+        if (busqueda !== ''){
+            const ac = new AbortController();
+            const datas = async () => {
+                const res = await axios.get('https://api.zarapito.xyz/productos')
+                //setState({ products: res.data })
+            }
+            datas()
+        }
+  
+    };
     return (
         <ReactBootStrap.Navbar collapseOnSelect expand="lg" className="br-dark dark">
             <Link to='/' className="navbar-brand">
@@ -49,15 +59,7 @@ export default function Navigation() {
             <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                 <ReactBootStrap.Nav className="mr-auto">
-                    <Link to='/novedades' className="nav-link">
-                        Novedades
-                    </Link>
-                    <Link to='/lenceria' className="nav-link">
-                        Lenceria
-                    </Link>
-                    <Link to='/ropadormir' className="nav-link">
-                        Ropa de dormir
-                    </Link>
+                  
                 </ReactBootStrap.Nav>
                 <ReactBootStrap.Nav>
                     <Link to='/Carro' className="nav-link">
@@ -131,8 +133,8 @@ export default function Navigation() {
                     }
                 </ReactBootStrap.Nav>
                 <Form inline >
-                    <FormControl type="text" placeholder="Busca tu producto" className="mr-sm-2" />
-                    <Button variant="outline-primary">Buscar</Button>
+                    <FormControl type="text" placeholder="Busca tu producto" onChange={(e) => setBusqueda(e.target.value)} value={busqueda} className="mr-sm-2" />
+                    <Button onClick={() => handleClick( )} variant="outline-primary">Buscar</Button>
                 </Form>
             </ReactBootStrap.Navbar.Collapse>
 

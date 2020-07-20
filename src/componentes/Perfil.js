@@ -1,8 +1,23 @@
 import React from 'react';
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from "react";
+import { useLocation } from 'wouter';
+
 
 export default function Perfil() {
+    const [, navigate] = useLocation()
+
+    useEffect(() => {
+        const ac = new AbortController();
+        console.log(sessionStorage.getItem('token'))
+        if (sessionStorage.getItem('token') === null &&  sessionStorage.getItem('tokenadmin') === null){
+            navigate('/')
+
+        }
+        return () => ac.abort();
+    },  [])
+
     return (
         <div>
             <div className="container">

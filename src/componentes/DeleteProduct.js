@@ -2,11 +2,12 @@ import React, { useEffect ,useState } from 'react';
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useDeleteProduct from '../hooks/useDeleteProduct';
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function DeleteProduct() {
 
     const [codigo, setCodigo] = useState('')
+    const [, navigate] = useLocation()
 
     const { deleteproduct, hasDeleteError, succeedDelete, errorMsj } = useDeleteProduct()
 
@@ -14,6 +15,14 @@ export default function DeleteProduct() {
         e.preventDefault();
         deleteproduct({ codigo })
     };
+
+    useEffect(() => {
+        const ac = new AbortController();
+        if (sessionStorage.getItem('tokenadmin') === null){
+            navigate('/')
+        }
+        return () => ac.abort();
+    },  [])
 
     useEffect(() => {
         if (succeedDelete ){

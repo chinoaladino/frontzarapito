@@ -19,7 +19,7 @@ export default function AddProduct() {
     useEffect(() => {
         const ac = new AbortController();
         const datas = async () => {
-            const res = await axios.get('http://localhost:3000/categorias/')
+            const res = await axios.get('https://api.zarapito.xyz/categorias/')
             setState({ cate: res.data })
         }
         datas()

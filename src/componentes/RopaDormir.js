@@ -15,12 +15,12 @@ export default function ManageProducts() {
     useEffect(() => {
         const ac = new AbortController();
         const datas = async () => {
-            const res = await axios.get('https://api.zarapito.xyz/productos')
+            const res = await axios.get('https://api.zarapito.xyz/categoria/ropa de dormir')
             setState({ products: res.data })
         }
         datas()
         return () => ac.abort();
-    }, [])
+    }, [setState])
 
     const handleClickDelete = (codigo) => {
         deleteproduct({ codigo })
@@ -30,32 +30,7 @@ export default function ManageProducts() {
 
         localStorage.setItem('find', codigo)
         navigate('/gestionarproductos/editaproductos')
-        
     }
-
-    useEffect(() => {
-        if (succeedDelete) {
-            const datas = async () => {
-                const res = await axios.get('https://api.zarapito.xyz/productos')
-                setState({ products: res.data })
-            }
-            datas()
-        }
-       
-    }, [succeedDelete, ])
-
-    useEffect(() => {
-        if (succeedDelete) {
-            const datas = async () => {
-                const res = await axios.get('https://api.zarapito.xyz/productos')
-                setState({ products: res.data })
-            }
-            datas()
-        }
-       
-    }, [succeedDelete, ])
-
-
 
     return (
         <>
@@ -110,7 +85,7 @@ export default function ManageProducts() {
                                 state.products.map(product => (
                                     <div className="col-12 col-md-6 col-lg-4" key={product.codigo}>
                                         <div className="card" >
-                                            <img className="card-img-top" src={"https://api.zarapito.xyz/"+product.fotos[0]} alt="Card image cap" style={{ height: "350px" }} />
+                                            <img className="card-img-top" src={product.fotos} alt="Card image cap" style={{ height: "350px" }} />
                                             <div className="card-body">
                                                 <h4 className="card-title"><a href="product.html" title="View Product">{product.nombre}</a></h4>
                                                 <p className="card-text">{product.stock}</p>

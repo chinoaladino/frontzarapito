@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import useUpdateProduct from '../hooks/useUpdateProduct';
 import useFindProduct from '../hooks/UseFindProduct';
 import { Link } from "wouter";
-import axios from 'axios';
 export default function UpdateProductos() {
     const [codigo, setCodigo] = useState('')
     const [stock, setStock] = useState('')

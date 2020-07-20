@@ -8,7 +8,7 @@ export default function addcategory({ categoria }){
     
     const token = window.sessionStorage.getItem('tokenadmin')
    
-    return  axios.post(`http://localhost:3000/categorias/agregar/` , category, {
+    return  axios.post(`https://api.zarapito.xyz/categorias/agregar/` , category, {
         headers: { Authorization: "Bearer " + token }
 
     })

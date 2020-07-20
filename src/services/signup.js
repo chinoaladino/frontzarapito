@@ -10,7 +10,7 @@ export default function signup({ rut, email, nombre, apellido, telefono, passwor
         telefono: telefono,
         password: password1
     }
-    return axios.post(`http://localhost:3000/registrar/`, user)
+    return axios.post(`https://api.zarapito.xyz/registrar/`, user)
         .then(res => {
             return "ok"
         })

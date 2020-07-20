@@ -14,7 +14,7 @@ export default function addproduct({ codigo, cat, nombre, precio, stock, foto })
 
     const token = window.sessionStorage.getItem('tokenadmin')
 
-    return axios.post(`http://localhost:3000/productos/agregar/`, data, {
+    return axios.post(`https://api.zarapito.xyz/productos/agregar/`, data, {
         headers: { Authorization: "Bearer " + token }
     })
         .then(res => {

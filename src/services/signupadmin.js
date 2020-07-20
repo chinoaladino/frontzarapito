@@ -9,7 +9,7 @@ export default function signupadmin({ email, nombre, apellido, password1 }) {
         apellido: apellido,
         password: password1
     }
-    return axios.post(`http://localhost:3000/admin/add/`, user)
+    return axios.post(`https://api.zarapito.xyz/admin/add/`, user)
         .then(res => {
             return "ok"
         })

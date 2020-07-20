@@ -7,7 +7,7 @@ export default function updateproduct({ codigo, cat, nombre, precio, stock, foto
     }
     const token = window.sessionStorage.getItem('tokenadmin')
 
-    return axios.put('http://localhost:3000/productos/' + codigo, products, {
+    return axios.put('https://api.zarapito.xyz/productos/' + codigo, products, {
         headers: { Authorization: "Bearer " + token }
 
     })

@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import useSignup from '../hooks/useSignup';
 
 
-export default function Register() {
+export default function RegisterAdmin() {
     const [email, setEmail] = useState('')
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
@@ -30,7 +30,6 @@ export default function Register() {
                                 </div>
                             )
                         })}
-
                     </div>
                 }
                 {succeedSign &&

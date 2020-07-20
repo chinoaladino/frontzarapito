@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useSignup from '../hooks/useSignup';
+import { useLocation } from 'wouter';
 
 
 export default function Register() {
@@ -12,9 +13,18 @@ export default function Register() {
     const [telefono, setTelefono] = useState('')
     const [password1, setPassword1] = useState('')
     const [password2, setPassword2] = useState('')
+    const [, navigate] = useLocation()
 
     const { signup, hasSignError, succeedSign, errorMsj } = useSignup()
 
+
+    useEffect(() => {
+        const ac = new AbortController();
+        if (sessionStorage.getItem('tokenadmin') === null && sessionStorage.getItem('token') ){
+            navigate('/')
+        }
+        return () => ac.abort();
+    },  [])
 
     const handleSubmit = (e) => {
         e.preventDefault();

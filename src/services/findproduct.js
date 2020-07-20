@@ -1,12 +1,8 @@
 import axios from 'axios';
 
 export default function findproducto({ codigo }){
-    
-    const product = {
-        codigo: codigo,  
-    }    
        
-    return axios.get('http://localhost:3000/productos/'+codigo, {
+    return axios.get('https://api.zarapito.xyz/productos/'+codigo, {
       })
         .then(res => {
             console.log()
