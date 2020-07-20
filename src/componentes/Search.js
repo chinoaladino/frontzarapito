@@ -12,7 +12,7 @@ export default function Search() {
     const { deleteproduct, hasDeleteError, succeedDelete, errorMsj } = useDeleteProduct()
     const [, navigate] = useLocation()
 
-    useEffect(async () => {
+    useEffect( () => {
         const ac = new AbortController();
         let busqueda = localStorage.getItem('busqueda')
         if (busqueda !== null) {
@@ -22,8 +22,11 @@ export default function Search() {
             }
             datas()
         } else {
-            const res = await axios.get('https://api.zarapito.xyz/productos')
-            setState({ products: res.data })
+            const datas = async () => {
+                const res = await axios.get('https://api.zarapito.xyz/productos')
+                setState({ products: res.data })
+            }
+            datas()
         }
         localStorage.removeItem('busqueda')
         return () => ac.abort();
@@ -66,7 +69,6 @@ export default function Search() {
                 console.log('existe')
             }
         }
-        return () => ac.abort();
 
     }
 
