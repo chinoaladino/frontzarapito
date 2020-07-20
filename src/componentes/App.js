@@ -20,6 +20,7 @@ import UpdateProductos from './UpdateProducts';
 import LoginAdmin from './LoginAdmin';
 import DeleteProduct from './DeleteProduct';
 import AddCategory from './AddCategory';
+import Search from './Search';
 import { UserContextProvider } from '../context/UserContext';
 import { UserContextProviderAdmin } from '../context/UserContextAdmin';
 
@@ -51,6 +52,8 @@ export default function App() {
                 <Route component={AddProduct} exact path="/gestionarproductos/agregarproductos">
                 </Route>
                 <Route component={ShowAllProducts} exact path="/gestionarproductos">
+                </Route>
+                <Route component={Search} exact path="/buscar">
                 </Route>
                 <Route component={DeleteProduct} exact path="/gestionarproductos/eliminarproducto">
                 </Route>

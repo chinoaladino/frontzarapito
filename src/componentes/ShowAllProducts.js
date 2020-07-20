@@ -7,7 +7,7 @@ import {
 import axios from 'axios';
 import useDeleteProduct from '../hooks/useDeleteProduct';
 
-export default function ManageProducts() {
+export default function ShowAllProducts() {
     const [state, setState] = useState({ products: [] })
     const { deleteproduct, hasDeleteError, succeedDelete, errorMsj } = useDeleteProduct()
     const [, navigate] = useLocation()

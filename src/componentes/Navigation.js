@@ -8,7 +8,6 @@ import { useLocation, Link } from 'wouter';
 import useLogin from '../hooks/useLogin';
 import useLoginAdmin from '../hooks/useLoginAdmin';
 import { useEffect } from "react";
-import axios from 'axios';
 
 export default function Navigation() {
 
@@ -40,16 +39,9 @@ export default function Navigation() {
     }, [isLogged || isLoggedAdmin, navigate])
 
     const handleClick = async (e) => {
-        e.preventDefault();
-        if (busqueda !== ''){
-            const ac = new AbortController();
-            const datas = async () => {
-                const res = await axios.get('https://api.zarapito.xyz/productos')
-                //setState({ products: res.data })
-            }
-            datas()
-        }
-  
+        localStorage.setItem('busqueda', busqueda)
+        navigate('/buscar')
+
     };
     return (
         <ReactBootStrap.Navbar collapseOnSelect expand="lg" className="br-dark dark">
