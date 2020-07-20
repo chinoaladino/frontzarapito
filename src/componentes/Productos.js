@@ -63,7 +63,7 @@ export default class Productos extends Component {
 
                             <div className="col-12 col-md-6 col-lg-4" key={producto.codigo}>
                                 <div className="card" >
-                                    <img className="card-img-top" src={"https://api.zarapito.xyz/"+producto.fotos[0]} alt="Card image cap" style={{ height: "350px" }} />
+                                    <img className="card-img-top" src={"https://api.zarapito.xyz"+producto.fotos[0]} alt="Card image cap" style={{ height: "350px" }} />
                                     <div className="card-body">
                                         <h4 className="card-title"><a href="product.html" title="View Product">{producto.nombre}</a></h4>
                                         <p className="card-text">{producto.stock}</p>

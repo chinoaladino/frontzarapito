@@ -18,7 +18,6 @@ export default function App() {
         loginAdmin({ email, password })
     };
  
-
     useEffect(() => {
         const ac = new AbortController();
         if (sessionStorage.getItem('token') !== null){
